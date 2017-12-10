@@ -1,0 +1,68 @@
+.Container__body {
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    padding-bottom: 10px;
+    display: -ms-flexbox;
+}
+
+.MovieForm {
+    height: 100%;
+    padding: 16px;
+    -ms-flex: 0 0 32%;
+    flex: 0 0 32%;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 0 2px 2px rgba(33, 33, 33, .5);
+    box-shadow: 0 0 2px 2px rgba(33, 33, 33, .5);
+    text-align: center
+}
+
+.MovieForm__label {
+    display: block;
+    margin-bottom: 20px;
+    color: #424242;
+    text-align: left
+}
+
+.MovieForm__input, .MovieForm__txtarea {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+    padding: 4px;
+    font-size: 20px;
+    color: #424242;
+    font-family: Roboto, sans-serif
+}
+
+.MovieForm__txtarea {
+    resize: none
+}
+
+.MovieForm__input:focus, .MovieForm__txtarea:focus {
+    outline-color: #303f9f
+}
+
+.MovieForm__submit {
+    outline: 0;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 16px;
+    background-color: #3f51b5;
+    cursor: pointer;
+    -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .3);
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .3);
+    -webkit-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    transition: all .2s linear
+}
+
+.MovieForm__submit:hover {
+    background-color: #ff5722;
+    -webkit-box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .3);
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .3)
+}
