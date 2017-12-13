@@ -9,10 +9,9 @@
 }
 
 .MovieForm {
-    height: 100%;
     padding: 16px;
-    -ms-flex: 0 0 32%;
-    flex: 0 0 32%;
+    -ms-flex: 0 0 30%;
+    flex: 0 0 30%;
     border-radius: 2px;
     -webkit-box-shadow: 0 0 2px 2px rgba(33, 33, 33, .5);
     box-shadow: 0 0 2px 2px rgba(33, 33, 33, .5);
@@ -65,4 +64,22 @@
     background-color: #ff5722;
     -webkit-box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .3);
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .3)
+}
+
+.MovieForm__genres {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-bottom: 16px
+}
+
+.MovieForm__genres label {
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: 8px;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #424242;
+    cursor: pointer;
 }

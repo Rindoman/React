@@ -1,15 +1,3 @@
-.container {
-    min-height: 100vh;
-    max-width: 65%;
-    min-width: 1280px;
-    margin: auto;
-    padding: 0 10px;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    display: -ms-flexbox;
-    display: flex;
-}
-
 .Header {
     display: -ms-flexbox;
     display: flex;

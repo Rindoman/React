@@ -24,6 +24,11 @@ export default class Sidebar extends React.Component {
                     <option value="10">10</option>
                 </select>
             </label>
+            <div class="MovieForm__genres">
+                <label><input type="checkbox" value="drama"/>drama</label>
+                <label><input type="checkbox" value="action"/>action</label>
+                <label><input type="checkbox" value="comedy"/>comedy</label>
+            </div>
             <button className="MovieForm__submit" type="submit">submit</button>
         </form>);
     }
