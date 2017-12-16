@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieCard from './Film-card/Card'
+import MovieCard from './MovieCard/Card'
 import  './style.css';
 import filmCard from './filmCard.js';
 import Sidebar from '../Sidebar/index'

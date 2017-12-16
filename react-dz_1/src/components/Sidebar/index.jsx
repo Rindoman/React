@@ -1,14 +1,35 @@
 import React from 'react';
 import './style.css';
 
-export default class Sidebar extends React.Component {
-    render() {
-        return (<form className="MovieForm">
+    const Sidebar = props => {
+        let form = null;
+        let inputTxt = null;
+        let textArea = null;
+        let check = true;
+      
+        const _handleFormSubmit = evt => {
+          evt.preventDefault();
+      
+          const userData = {
+            input: inputTxt.value,
+            txtArea: textArea.value,
+            // check: check.value,
+            checkbox1: check.value,
+            checkbox2: check.value,
+            checkbox3: check.value
+          };
+      
+          console.log(JSON.stringify(userData));
+      
+          form.reset();
+        };
+
+        return (<form onSubmit={_handleFormSubmit} ref={node => (form = node)} className="MovieForm">
             <label className="MovieForm__label">Title
-                <input type="text" className="MovieForm__input"/>
+                <input type="text" ref={node => {inputTxt = node;}} className="MovieForm__input"/>
             </label>
             <label className="MovieForm__label">Description
-                <textarea className="MovieForm__txtarea" rows="8"></textarea>
+                <textarea ref={node => {textArea = node;}} className="MovieForm__txtarea" rows="8"></textarea>
             </label>
             <label className="MovieForm__label">Rating
                 <select className="MovieForm__input">
@@ -24,12 +45,13 @@ export default class Sidebar extends React.Component {
                     <option value="10">10</option>
                 </select>
             </label>
-            <div class="MovieForm__genres">
-                <label><input type="checkbox" value="drama"/>drama</label>
-                <label><input type="checkbox" value="action"/>action</label>
-                <label><input type="checkbox" value="comedy"/>comedy</label>
+            <div className="MovieForm__genres">
+                <label><input ref={node => {check = node;}} type="checkbox" value="drama"/>drama</label>
+                <label><input ref={node => {check = node;}} type="checkbox" value="action"/>action</label>
+                <label><input ref={node => {check = node;}} type="checkbox" value="comedy"/>comedy</label>
             </div>
             <button className="MovieForm__submit" type="submit">submit</button>
         </form>);
     }
-}
+
+export default Sidebar;
