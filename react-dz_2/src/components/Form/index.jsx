@@ -9,7 +9,8 @@ export default class AddTodoForm extends Component {
 
   state = {
     inputValue: '',
-    inputArea: ''
+    inputArea: '',
+    rating: ''
   };
 
   _handleInputChange = evt => {
@@ -19,7 +20,7 @@ export default class AddTodoForm extends Component {
       inputValue: value
     });
   };
-
+  
   _handleInputAreaChange = evt => {
     const value = evt.target.value;
 
@@ -28,22 +29,31 @@ export default class AddTodoForm extends Component {
     });
   };
 
-  _handleSubmit = evt => {
-    evt.preventDefault();
-
-    this.props.onFormSubmit(this.state.inputValue);
-    this.props.onFormSubmit(this.state.inputArea);
+  _handleRatingChange = evt => {
+    const value = evt.target.value;
 
     this.setState({
-      inputValue: '',
-      inputArea: ''
+      rating: `Rating: ${value}/10`
     });
   };
 
+  _handleSubmit = evt => {
+    evt.preventDefault();
+
+    this.props.onFormSubmit(this.state.inputValue, this.state.inputArea, this.state.rating);
+
+    this.setState({
+      inputValue: '',
+      inputArea: '',
+      rating: '1'
+    });
+  };
+ 
+  
+
   render() {
-    const { inputValue, inputArea } = this.state;
-    // console.log(JSON.stringify(inputArea));
-    // console.log(JSON.stringify(inputValue));
+    const { inputValue, inputArea, rating } = this.state;
+
   return (
     <form onSubmit={this._handleSubmit} className="MovieForm">
       <label className="MovieForm__label">Title
@@ -60,7 +70,8 @@ export default class AddTodoForm extends Component {
         </textarea>
       </label>
       <label className="MovieForm__label">Rating
-        <select className="MovieForm__input">
+        <select value={rating}
+          onChange={this._handleRatingChange} className="MovieForm__input">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -78,8 +89,8 @@ export default class AddTodoForm extends Component {
         <label><input type="checkbox" value="action"/>action</label>
         <label><input type="checkbox" value="comedy"/>comedy</label>
       </div>
-      <button className="MovieForm__submit" type="submit">submit</button>
+      <button onClick={this.onBtnClickHandler} className="MovieForm__submit" type="submit">submit</button>
     </form>
   );
-}
+  }
 }

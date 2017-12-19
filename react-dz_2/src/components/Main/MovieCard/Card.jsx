@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import v4 from 'uuid/v4';
 
 export default class MovieCard extends React.Component {
   static propTypes = {
@@ -11,9 +10,8 @@ export default class MovieCard extends React.Component {
     onClick: () => {console.log(1);}
   };
   render() {
-    const {onClick} = this.props;
-    const {title, description, genres, rating} = this.props;
-    const listItem = genres.map(genre => <li className="ChipsList__item" key={v4()}>{genre}</li>);
+    const {title, description, genres, rating, onClick} = this.props;
+    const listItem = genres.map(genre => <li className="ChipsList__item" key={genre}>{genre}</li>);
 
     return (
     <div className="MovieCard">
