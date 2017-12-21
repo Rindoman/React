@@ -1,16 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 export default class MovieCard extends React.Component {
-  static propTypes = {
-    onClick: PropTypes.func
-  };
 
-  static defaultProps = {
-    onClick: () => {console.log(1);}
-  };
   render() {
-    const {title, description, genres, rating, onClick} = this.props;
+    const {title, description, rating, genres, onClick} = this.props;
     const listItem = genres.map(genre => <li className="ChipsList__item" key={genre}>{genre}</li>);
 
     return (
@@ -26,9 +19,3 @@ export default class MovieCard extends React.Component {
     );
   }
 }
-MovieCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
-};

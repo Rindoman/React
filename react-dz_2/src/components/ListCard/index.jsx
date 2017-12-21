@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddCard from 'components/AddCard/';
+import MovieCard from 'components/Main/MovieCard/MovieCard';
 
-const ListCard = ({ arrCards, ClickOnCard }) => (  
-    arrCards.map(t => (
-      <AddCard
-        key={t.id}
-        title={t.title}
-        description={t.description}
-        rating={t.rating}
+const ListCard = ({ filmCard, ClickOnCard }) => (  
+    filmCard.map(t => (
+      <MovieCard
+        {...t}
         onClick={() => {
           ClickOnCard(t.id);
         }}
@@ -17,7 +14,7 @@ const ListCard = ({ arrCards, ClickOnCard }) => (
 );
 
 ListCard.propTypes = {
-  arrCards: PropTypes.arrayOf(
+  filmCard: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,

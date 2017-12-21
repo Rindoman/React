@@ -10,7 +10,7 @@ export default class AddTodoForm extends Component {
   state = {
     inputValue: '',
     inputArea: '',
-    rating: ''
+    rating: '1'
   };
 
   _handleInputChange = evt => {
@@ -33,14 +33,17 @@ export default class AddTodoForm extends Component {
     const value = evt.target.value;
 
     this.setState({
-      rating: `Rating: ${value}/10`
+      rating: value
     });
   };
 
-  _handleSubmit = evt => {
+  _handleSubmit = evt => {    
     evt.preventDefault();
-
-    this.props.onFormSubmit(this.state.inputValue, this.state.inputArea, this.state.rating);
+    if (this.state.inputValue !== '' && this.state.inputArea !== '') {
+      this.props.onFormSubmit(this.state.inputValue, this.state.inputArea, this.state.rating);
+    } else {
+      alert ('Заполните поля!');
+    }
 
     this.setState({
       inputValue: '',
@@ -49,8 +52,6 @@ export default class AddTodoForm extends Component {
     });
   };
  
-  
-
   render() {
     const { inputValue, inputArea, rating } = this.state;
 
@@ -89,7 +90,7 @@ export default class AddTodoForm extends Component {
         <label><input type="checkbox" value="action"/>action</label>
         <label><input type="checkbox" value="comedy"/>comedy</label>
       </div>
-      <button onClick={this.onBtnClickHandler} className="MovieForm__submit" type="submit">submit</button>
+      <button className="MovieForm__submit" type="submit">submit</button>
     </form>
   );
   }
