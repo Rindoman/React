@@ -1,63 +1,81 @@
 import React from 'react';
 import Header from 'components/Header';
-import SearchForm from 'components/SearchForm'
+import Sidebar from 'components/Sidebar/';
 import ListCard from 'components/ListCard/';
-import { fetchData } from 'API';
-
+import {fetchData} from 'API';
+import {fetchDataFilms} from 'API_';
+import {fetchPopular} from 'API_Popular';
 
 export default class App extends React.Component {
-  state = {
-    filmCard: []
-  };
+    state = {
+        filmCard: [],
+        watchList: []
+    };
 
-  handleFormSubmit = query => {
-    fetchData(query).then(data => {
-      this.setState({
-        filmCard: data
-      });
-    });
-  };
+    handleFormSubmit = query => {
+        fetchData(query).then(data => {
+            return (query !== '')
+              ?  this.setState({filmCard: data})
+              :  alert('Enter something!')
+        })
+    }
 
-  componentWillMount() {
-    fetchData('cat').then(data => {
-      this.setState({
-        filmCard: data
-      });
-    });
-  }
+    componentWillMount() {
+        fetchPopular().then(data => {
+            this.setState({filmCard: data, 
+                watchList: JSON.parse(localStorage.getItem('WatchList')) || []
+            });
+        });
+    }
 
-  // AddNewCard = (title, description, rating, genres) => {
-  //   const list = {
-  //     id: v4(),
-  //     title: title,
-  //     description: description,
-  //     rating: `Rating: ${rating}/10`,
-  //     genres: []
-  //   };
+    delWatchList = id => {
+        let watchList = this.state.watchList.filter(movie => movie.id !== id);
+        this.setState(prevState => ({filmCard: prevState.filmCard, watchList: watchList}));
+        setInterval(() => {
+            let watchList = JSON.stringify(this.state.watchList);
+            localStorage.setItem('WatchList', watchList);
+        }, 100);
+    }
 
-  //   this.setState({
-  //     filmCard :[...this.state.filmCard, list]
-  //   })
-  // };
+    addWatchList = id => {
+        if (this.state.watchList.filter(movie => movie.id === id).length === 0) {
+            let watchListItem = this.state.filmCard.filter(movie => movie.id === id);
+            this.setState(prevState => ({
+                filmCard: prevState.filmCard,
+                watchList: [
+                    ...prevState.watchList,
+                    ...watchListItem
+                ]
+            }))
+        } else
+            alert('This movie already in your watchlist');
+        setInterval(() => {
+            let watchList = JSON.stringify(this.state.watchList);
+            localStorage.setItem('WatchList', watchList);
+        }, 100);
+    }
 
-  DelCard = id => {
-    this.setState({
-      filmCard: this.state.filmCard.filter(list => list.id !== id)
-    });
-  };
+    getUrl = (url) => {
+        fetchDataFilms(url).then(data => {
+            this.setState({filmCard: data})
+        })
+    }
 
-  render() {
-    const { filmCard } = this.state;
-    return (
-      <div className="container">
-        <Header/>
-        <div className="Container__body">
-          <div className="Movie-list">
-            <ListCard filmCard={filmCard} ClickOnCard={this.DelCard} />
-          </div>
-          <SearchForm onFormSubmit={this.handleFormSubmit} />
-        </div>
-      </div>
-    );
-  }
-} 
+    render() {
+        const {filmCard, watchList} = this.state;
+        return (<div className="container">
+            <Header/>
+            <div className="Container__body">
+                <Sidebar
+                    url={this.getUrl}
+                    searchFormSubmit={this.handleFormSubmit}
+                    watchListData={watchList}
+                    onDelCard={this.delWatchList}
+                />
+                <div className="Movie-list">
+                    <ListCard ClickOnCard={this.addWatchList} filmCard={filmCard}/>
+                </div>
+            </div>
+        </div>);
+    }
+}

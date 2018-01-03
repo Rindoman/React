@@ -16,7 +16,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   type: 'button',
-  cls: 'MovieForm__submit',
+  cls: 'Search-categories__btn',
   onClick: () => {}
 };
 

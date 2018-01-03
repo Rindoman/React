@@ -184,7 +184,7 @@
   }
   .MovieCard__item {
    width:25%;
-   padding:20px;
+   padding:15px;
   }
   .Movie-list__msg {
    position:absolute;
@@ -289,7 +289,7 @@
   #search:hover {
     background-color:#3f51b5
   }
-  .Watch-listCard {
+  .WatchlistCard {
    position:relative;
    display:-ms-flexbox;
    display:flex;
@@ -309,29 +309,29 @@
    transition:all .3s ease-out;
    cursor:pointer;
   }
-  .Watch-listCard:hover {
+  .WatchlistCard:hover {
    -webkit-box-shadow:5px 5px 12px 0 #534d4d;
    box-shadow:5px 5px 12px 0 #534d4d;
   }
-  .Watch-listCard__img {
+  .WatchlistCard__img {
    display:block;
    width:40%;
    height:100px;
    -o-object-fit:cover;
    object-fit:cover;
   }
-  .Watch-listCard__body {
+  .WatchlistCard__body {
    width:55%;
   }
-  .Watch-listCard__title {
+  .WatchlistCard__title {
    font-size:16px;
    line-height:1.5;
   }
-  .Watch-listCard__rating,.WatchlistCard__release {
+  .WatchlistCard__rating,.WatchlistCard__release {
    font-size:14px;
    margin-top:8px;
   }
-  .Watch-listCard__btn {
+  .WatchlistCard__btn {
    position:absolute;
    outline:0;
    border:0;
@@ -355,7 +355,7 @@
    background-color:#3f51b5;
    color:#fff;
   }
-  .Watch-list {
+  .Watchlist {
    position:relative;
    min-height:350px;
    max-height:72vh;
@@ -364,7 +364,7 @@
    border-radius:2px;
    background-color:#e2b100;
   }
-  .Watch-list__title {
+  .Watchlist__title {
    display:-ms-flexbox;
    display:flex;
    -ms-flex-pack:center;
@@ -376,20 +376,20 @@
    font-size:28px;
    margin-bottom:15px;
   }
-  .Watch-list__title:after,.Watch-list__title:before {
+  .Watchlist__title:after,.Watchlist__title:before {
    display:block;
    content:"";
    width:15%;
    height:2px;
    background-color:#0c161e;
   }
-  .Watch-list__title:before {
+  .Watchlist__title:before {
    margin-right:10px;
   }
-  .Watch-list__title:after {
+  .Watchlist__title:after {
    margin-left:10px;
   }
-   .Watch-list__msg {
+   .Watchlist__msg {
    position:absolute;
    top:50%;
    left:50%;
@@ -401,15 +401,15 @@
    font-size:20px;
    color:#0c161e;
   } 
-   .Watch-list::-webkit-scrollbar-track {
+   .Watchlist::-webkit-scrollbar-track {
    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);
    background-color:#f5f5f5;
   }
-  .Watch-list::-webkit-scrollbar {
+  .Watchlist::-webkit-scrollbar {
    width:16px;
    background-color:#f5f5f5;
   } 
-  .Watch-list::-webkit-scrollbar-thumb {
+  .Watchlist::-webkit-scrollbar-thumb {
    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);
    background-color:#3f51b5;
   }

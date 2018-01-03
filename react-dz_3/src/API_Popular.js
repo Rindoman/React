@@ -1,8 +1,8 @@
-export function fetchData(query) {
+export function fetchPopular() {
   const key = '&api_key=f24a0fd18f52218851075901c5a108a0';
-  const startUrl = 'https://api.themoviedb.org/3/search/movie?&page=1&include_adult=false';
+  const popular = 'https://api.themoviedb.org/3/movie/popular?&page=1';
  
-  return fetch(`${startUrl}${key}&query=${query}`)
+  return fetch(`${popular}${key}`)
     .then(response => {
       if (response.ok) {
         return response.json();
