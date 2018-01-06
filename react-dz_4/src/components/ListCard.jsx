@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieCard from 'components/Main/MovieCard/MovieCard';
+import MovieCard from './MovieCard';
 
 const ListCard = ({ filmCard, ClickOnCard }) => (  
     filmCard.map(t => (

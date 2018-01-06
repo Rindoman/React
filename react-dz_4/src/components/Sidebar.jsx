@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SearchForm from '../SearchForm';
-import Search from 'components/Search';
-import WatchList from '../WatchList';
+import SearchForm from './SearchForm';
+import Search from './Search';
+import WatchList from './Watchlist';
 
 const Sidebar = ({ searchFormSubmit, url, watchListData, onDelCard }) => {
     return (

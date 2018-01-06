@@ -1,12 +1,12 @@
-import React from 'react';
-import Header from 'components/Header';
-import Sidebar from 'components/Sidebar/';
-import ListCard from 'components/ListCard/';
+import React,  { Component } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Sidebar from './Sidebar';
+import ListCard from './ListCard';
 import {fetchData} from 'API';
 import {fetchDataFilms} from 'API_';
+import {fetchPopular} from 'API_Popular';
 
-
-export default class App extends React.Component {
+class MoviePage extends Component {
     state = {
         filmCard: [],
         watchList: []
@@ -65,7 +65,6 @@ export default class App extends React.Component {
     render() {
         const {filmCard, watchList} = this.state;
         return (<div className="container">
-            <Header/>
             <div className="Container__body">
                 <Sidebar
                     url={this.getUrl}
@@ -80,3 +79,4 @@ export default class App extends React.Component {
         </div>);
     }
 }
+export default MoviePage;

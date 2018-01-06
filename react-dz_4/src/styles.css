@@ -422,6 +422,15 @@
    -ms-flex-direction:column;
    flex-direction:column;
   }
+  .Container__body {
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    padding-bottom: 10px;
+    display: -ms-flexbox;
+}
   .container,.container__body {
    display:-ms-flexbox;
    display:flex;

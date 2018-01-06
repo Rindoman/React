@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import WatchlistCard from 'components/SearchForm/WatchlistCard/';
+import WatchlistCard from './WatchlistCard';
 
 const WatchList = ({
     card = '',
