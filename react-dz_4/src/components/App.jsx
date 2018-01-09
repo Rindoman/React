@@ -1,33 +1,29 @@
 import React,  { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import Header from './Header'
 import MoviePage from './MoviePage'
-import Nav from './Nav';
 import HomePage from 'pages/Home';
 import AboutPage from 'pages/About';
 
-const navLinks = [
-    {
-        path: '/about',
-        text: 'about'
-    },
-    {
-        path: '/movies',
-        text: 'movies'
-    },
-    {
-        path: '/',
-        text: 'home'
+  export default class App extends Component {
+    addActiveClass() {
+        this._сlassNavLinks();
     }
-  ];
 
-class App extends Component {
-
+    _сlassNavLinks = () => {
+        const NavLinks = document.querySelectorAll('.Navigations__link');
+        NavLinks.forEach(link => {
+            link.addEventListener('click', evt => {
+                NavLinks.forEach(link => {
+                    link.classList.remove('Navigations__link--active');
+                })
+                link.classList.add('Navigations__link--active');
+            });
+        })
+    }
     render() {
         return (<div className="container">
-            <header className="Header">
-                <h1 className="Header__logo">movie mate</h1>
-                <Nav items={navLinks} />
-            </header>
+            <Header />
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route path="/movies" component={MoviePage} />
@@ -37,4 +33,3 @@ class App extends Component {
         </div>);
     }
 }
-export default App;

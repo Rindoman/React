@@ -1,31 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const Nav = ({ items, currentPath }) => {
-  return (    
-    <ul className="Navigation">
-      {items.map(i => (
-        <li key={i.path} className="Navigation__item">
-          <Link to={`${currentPath}${i.path}`} className="Navigation__link" >{i.text}</Link>
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-Nav.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      path: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired,
-  currentPath: PropTypes.string
-};
-
-Nav.defaultProps = {
-  currentPath: ''
-};
+const Nav = (props) => (
+    <nav className="Navigation">
+        <NavLink exact to="/" activeClassName="Navigation__link--active" className="Navigation__link">Home</NavLink>
+        <NavLink to="/movies" activeClassName="Navigation__link--active" className="Navigation__link">movies</NavLink>
+        <NavLink to="/about" activeClassName="Navigation__link--active" className="Navigation__link">about</NavLink>
+    </nav>
+);
 
 export default Nav;

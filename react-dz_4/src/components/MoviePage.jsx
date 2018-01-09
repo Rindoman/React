@@ -1,5 +1,4 @@
 import React,  { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import ListCard from './ListCard';
 import {fetchData} from 'API';
