@@ -1,9 +1,7 @@
 import React,  { Component } from 'react';
-import Sidebar from './Sidebar';
-import ListCard from './ListCard';
-import {fetchData} from 'API';
-import {fetchDataFilms} from 'API_';
-import {fetchPopular} from 'API_Popular';
+import Sidebar from 'components/Sidebar';
+import ListCard from 'components/ListCard';
+import {fetchData, fetchDataFilms, fetchPopular} from 'API_';
 
 class MoviePage extends Component {
     state = {
@@ -16,7 +14,7 @@ class MoviePage extends Component {
             return (query !== '')
               ?  this.setState({filmCard: data})
               :  alert('Enter something!')
-        })
+        });
     }
 
     componentWillMount() {
@@ -30,10 +28,8 @@ class MoviePage extends Component {
     delWatchList = id => {
         let watchList = this.state.watchList.filter(movie => movie.id !== id);
         this.setState(prevState => ({filmCard: prevState.filmCard, watchList: watchList}));
-        setInterval(() => {
-            let watchList = JSON.stringify(this.state.watchList);
-            localStorage.setItem('WatchList', watchList);
-        }, 500);
+        localStorage.setItem('WatchList', JSON.stringify(watchList));
+        this.setState({watchList: watchList});
     }
 
     addWatchList = id => {
@@ -45,14 +41,14 @@ class MoviePage extends Component {
                     ...prevState.watchList,
                     ...watchListItem
                 ]
-            }))
+            }),
+            () => {
+                let watchList = JSON.stringify(this.state.watchList);
+                localStorage.setItem('WatchList', watchList);
+            })
         } else {
             alert('This movie has already been added');
         }
-        setInterval(() => {
-            let watchList = JSON.stringify(this.state.watchList);
-            localStorage.setItem('WatchList', watchList);
-        }, 500);
     }
 
     getUrl = (url) => {
