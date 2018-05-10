@@ -6,6 +6,7 @@ import {fetchData} from 'API';
 import {fetchDataFilms} from 'API_';
 import {fetchPopular} from 'API_Popular';
 
+
 export default class App extends React.Component {
     state = {
         filmCard: [],
@@ -31,10 +32,10 @@ export default class App extends React.Component {
     delWatchList = id => {
         let watchList = this.state.watchList.filter(movie => movie.id !== id);
         this.setState(prevState => ({filmCard: prevState.filmCard, watchList: watchList}));
-        setInterval(() => {
+        setTimeout(() => {
             let watchList = JSON.stringify(this.state.watchList);
             localStorage.setItem('WatchList', watchList);
-        }, 100);
+        }, 1000);
     }
 
     addWatchList = id => {
@@ -47,12 +48,13 @@ export default class App extends React.Component {
                     ...watchListItem
                 ]
             }))
-        } else
-            alert('This movie already in your watchlist');
-        setInterval(() => {
+        } else {
+            alert('This movie has already been added');
+        }
+        setTimeout(() => {
             let watchList = JSON.stringify(this.state.watchList);
             localStorage.setItem('WatchList', watchList);
-        }, 100);
+        }, 1000);
     }
 
     getUrl = (url) => {
