@@ -8,9 +8,7 @@ export default class MovieCard extends React.Component {
   };
 
   static defaultProps = {
-    onClick: () => {
-      console.log(1);
-    }
+    onClick: () => {console.log(1);}
   };
   render() {
     const {onClick} = this.props;
