@@ -13,7 +13,7 @@ export default class App extends React.Component {
     filmCard: filmCard
   };
 
-  AddNewCard = (title, description, rating, genres) => {
+  addNewCard = (title, description, rating, genres) => {
     const list = {
       id: v4(),
       title: title,
@@ -27,7 +27,7 @@ export default class App extends React.Component {
     })
   };
 
-  DelCard = id => {
+  delCard = id => {
     this.setState({
       filmCard: this.state.filmCard.filter(list => list.id !== id)
     });
@@ -40,9 +40,9 @@ export default class App extends React.Component {
       <Header/>
       <div className="Container__body">
       <div className="Movie-list">
-        <ListCard filmCard={this.state.filmCard} ClickOnCard={this.DelCard} />
+        <ListCard filmCard={this.state.filmCard} clickOnCard={this.delCard} />
         </div>
-        <Form onFormSubmit={this.AddNewCard} />
+        <Form onFormSubmit={this.addNewCard} />
       </div>
     </div>
     );

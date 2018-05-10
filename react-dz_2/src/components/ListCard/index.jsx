@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieCard from 'components/Main/MovieCard/MovieCard';
 
-const ListCard = ({ filmCard, ClickOnCard }) => (  
+const ListCard = ({ filmCard, clickOnCard }) => (  
     filmCard.map(t => (
       <MovieCard
         {...t}
         onClick={() => {
-          ClickOnCard(t.id);
+          clickOnCard(t.id);
         }}
       />
     )) 
@@ -22,7 +22,7 @@ ListCard.propTypes = {
       rating: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  ClickOnCard: PropTypes.func.isRequired
+  clickOnCard: PropTypes.func.isRequired
 };
 
 export default ListCard;
